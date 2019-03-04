@@ -1,5 +1,5 @@
 描述：
-求链表第Ｋ个节点
+1. 求链表第Ｋ个节点
 
 分析：
 设置两个指针，p1先走k步，p2再从头指针开始，两个指针同时走，p1到达尾部，p2即刻为倒数第k个节点
@@ -29,4 +29,26 @@ Node* lastKNode(Node* head, int k)
     p2 = p2->next;
   }
   return p2;
+}
+
+描述：
+2. 求链表中间的节点，若链表节点数量为基数，返回中间节点；若链表节点数量为偶数，返回中间两个任意一个节点。
+
+分析：
+用快慢指针
+
+Node* middleNode(Node* head)
+{
+  if(head == NULL)
+  {
+    return NULL;
+  }
+  
+  Node* slow = head;
+  Node* fast = head;
+  while(fast != NULL && fast->next != NULL)
+  {
+    fast = fast->next->next;
+    slow = slow ->next;
+  }
 }
