@@ -1,0 +1,43 @@
+描述：
+判断单链表是否有环，并返回环入口节点
+用快慢指针，快慢指针相遇时节点距离环入口距离即为头指针到环入口距离
+
+code:
+Node* findLoop(Node* head)
+{
+  if(head == NULL)
+  {
+    return NULL;
+  }
+  
+  Node* p1 = head;
+  Node* p2 = head;
+  while(p2 != NULL && p2->next != NULL)
+  {
+    p2 = p2->next->next;
+    p1 = p1->next;
+    if(p1 == p2)
+    {
+      //find loop
+      break;
+    }
+  }
+  
+  if(p1 != p2)
+  {
+    return NULL;//不存在环
+  }else
+  {
+    p2 = head;
+    while(p2 != NULL)
+    {
+      p2 = p2->next;
+      p1 = p1->next;
+      if(p1 == p2)
+      {
+        break;
+      }
+    }
+    return p1;
+  }
+}
