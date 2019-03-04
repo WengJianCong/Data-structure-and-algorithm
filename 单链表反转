@@ -1,0 +1,25 @@
+描述：
+单链表反转
+
+code:
+1. 非递归实现，用三个中间指针变量pre, head, next
+Node* reverseByloop(Node* head)
+{
+  if(head == NULL || head->next = NULL)
+  {
+    return head;
+  }
+  
+  Node* pre = NULL;
+  Node* next = NULL;
+  while(head != NULL)
+  {
+    next = head->next;
+    head->next = pre;
+    pre = head;
+    head = next;
+  }
+  return pre;
+}
+
+2. 递归实现
