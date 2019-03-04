@@ -1,0 +1,16 @@
+描述：
+给定链表头的头指针和一个节点指针，在Ｏ(1)时间内删除该节点
+
+分析：
+狸猫换太子，无需遍历，用节点指针值等于下一个指针值，再指向下下个指针。这种方法不能删除尾节点。
+
+code:
+void deleteNode(Node* cur)
+{
+  assert(cur != NULL);
+  assert(cur->next != NULL);
+  Node* pre = cur->next;
+  cur->val = pre->val;
+  cur->next = pre->next;
+  delete pre; //防止内存泄漏；
+}
